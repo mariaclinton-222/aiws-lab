@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App with Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+        <h1>🎯 JavaScript Quiz</h1>
+        <p class="quiz-subtitle">Test your JavaScript knowledge!</p>
+        <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <div class="timer-section">
+            <div class="timer-display">
+                <span class="timer-icon">⏱️</span>
+                <span id="timer" class="timer-value">10</span>
+                <span class="timer-label">seconds</span>
+            </div>
+            <div id="warning-message" class="warning-message">⚠️ Only 5 seconds remaining!</div>
+        </div>
+
+        <div class="quiz-content">
+            <form id="quiz-form">
+                <!-- Question 1 -->
+                <div class="question-block" data-question="1">
+                    <div class="question-number">1</div>
+                    <h3>What does DOM stand for?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q1" value="a">
+                            <span>Data Object Model</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="b">
+                            <span>Document Object Model</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="c">
+                            <span>Digital Object Model</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="d">
+                            <span>Dynamic Object Model</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-block" data-question="2">
+                    <div class="question-number">2</div>
+                    <h3>Which method is used to stop a setInterval() function?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q2" value="a">
+                            <span>stopInterval()</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="b">
+                            <span>clearInterval()</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="c">
+                            <span>endInterval()</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="d">
+                            <span>removeInterval()</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-block" data-question="3">
+                    <div class="question-number">3</div>
+                    <h3>What is the correct syntax to select an element by ID?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q3" value="a">
+                            <span>document.querySelector('#id')</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="b">
+                            <span>document.getElement('id')</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="c">
+                            <span>document.findById('id')</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="d">
+                            <span>document.selectId('id')</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question-block" data-question="4">
+                    <div class="question-number">4</div>
+                    <h3>Which keyword is used to declare a constant in JavaScript?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q4" value="a">
+                            <span>var</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="b">
+                            <span>let</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="c">
+                            <span>const</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="d">
+                            <span>constant</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question-block" data-question="5">
+                    <div class="question-number">5</div>
+                    <h3>What does the disabled property do to an input element?</h3>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="q5" value="a">
+                            <span>Hides the element</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="b">
+                            <span>Deletes the element</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="c">
+                            <span>Prevents user interaction</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="d">
+                            <span>Changes the element color</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="button" id="submit-btn" class="submit-btn">
+                    <span class="btn-text">Submit Quiz</span>
+                    <span class="btn-icon">✓</span>
+                </button>
+            </form>
+        </div>
+
+        <div id="result-section" class="result-section" style="display: none;">
+            <div class="result-icon">🎉</div>
+            <h2>Quiz Complete!</h2>
+            <div class="score-display">
+                <div class="score-circle">
+                    <span id="score" class="score-value">0</span>
+                    <span class="score-total">/5</span>
+                </div>
+                <p id="score-message" class="score-message"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

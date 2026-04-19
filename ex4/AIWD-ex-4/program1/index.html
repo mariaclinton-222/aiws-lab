@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional Currency Converter – Convert between 100+ world currencies instantly." />
+  <title>Currency Converter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body onload="initApp()">
+
+  <!-- Background blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <main class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">💱</span>
+        <h1>Currency Converter</h1>
+      </div>
+      <p class="tagline">Convert 100+ world currencies instantly</p>
+    </header>
+
+    <!-- Converter Card -->
+    <section class="card" id="converterCard">
+      <form id="converterForm" onsubmit="handleFormSubmit(event)">
+
+        <!-- Amount Input -->
+        <div class="input-group">
+          <label for="amount">Amount</label>
+          <div class="input-wrapper">
+            <span class="input-prefix" id="currencySymbol">$</span>
+            <input
+              type="number"
+              id="amount"
+              class="currency-input"
+              placeholder="Enter amount"
+              min="0"
+              step="any"
+              value="1"
+              onkeyup="handleAmountKeyup(event)"
+            />
+          </div>
+        </div>
+
+        <!-- Currency Selectors -->
+        <div class="selectors">
+          <!-- From Currency -->
+          <div class="select-group">
+            <label for="fromCurrency">From</label>
+            <input
+              type="text"
+              id="searchFrom"
+              class="search-input"
+              placeholder="🔍 Search currency…"
+              onkeyup="filterDropdown('fromCurrency', this.value)"
+            />
+            <select id="fromCurrency" class="currency-select" onchange="handleCurrencyChange()">
+            </select>
+          </div>
+
+          <!-- Swap Button -->
+          <button type="button" id="swapBtn" class="swap-btn" onclick="swapCurrencies()" title="Swap currencies">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 16l-4-4 4-4"/>
+              <path d="M17 8l4 4-4 4"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+            </svg>
+          </button>
+
+          <!-- To Currency -->
+          <div class="select-group">
+            <label for="toCurrency">To</label>
+            <input
+              type="text"
+              id="searchTo"
+              class="search-input"
+              placeholder="🔍 Search currency…"
+              onkeyup="filterDropdown('toCurrency', this.value)"
+            />
+            <select id="toCurrency" class="currency-select" onchange="handleCurrencyChange()">
+            </select>
+          </div>
+        </div>
+
+        <!-- Convert Button -->
+        <button type="submit" id="convertBtn" class="convert-btn" onclick="convertCurrency()">
+          <span>Convert</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Result Display -->
+      <div id="resultContainer" class="result-container hidden">
+        <div class="result-label">Converted Amount</div>
+        <div class="result-value" id="resultValue">0.00</div>
+        <div class="result-rate" id="resultRate">1 USD = 83.12 INR</div>
+      </div>
+    </section>
+
+    <!-- Live Rates Ticker -->
+    <section class="rates-section" id="ratesSection">
+      <h2 class="rates-title">Live Exchange Rates</h2>
+      <div class="rates-grid" id="ratesGrid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2026 Currency Converter. Built with ❤️</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

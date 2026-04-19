@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register for the upcoming Tech Summit - Join industry experts for talks, networking, and hands-on workshops.">
+  <meta name="keywords" content="tech summit, event registration, technology conference, workshops">
+  <meta name="author" content="Tech Summit Team">
+  <title>Event Registration & Promotional Portal</title>
+  
+  <!-- TC01: External CSS Linking -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Upcoming Tech Summit — Register Now</h1>
+    <p>Join us for an exciting day of talks, networking, and hands-on workshops with industry experts.</p>
+  </header>
+
+  <main class="container">
+    <!-- Media Section -->
+    <h2 class="section-title">Event Highlights</h2>
+    <section class="media-section">
+      <!-- Banner Image -->
+      <div class="banner-wrapper">
+        <a href="https://www.fbcmarshville.org/event-registration/" target="_blank" class="banner-link" title="Click to learn more about event registration">
+          <img src="download.jpeg" alt="Tech Summit banner showing speakers and date" />
+        </a>
+      </div>
+
+      <!-- Video & Audio Grid - TC05: Flexbox Layout -->
+      <div class="media-grid">
+        <div class="media-item">
+          <label for="promo-video">Promotional Video</label>
+          <video id="promo-video" controls preload="metadata">
+            <source src="Blue%20Futuristic%20Artificial%20Intelligence%20Video.mp4" type="video/mp4">
+            Your browser does not support the video element.
+          </video>
+        </div>
+
+        <div class="media-item">
+          <label for="intro-audio">Event Intro Audio</label>
+          <audio id="intro-audio" controls preload="none">
+            <source src="SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Form Section - TC10: Integration & Stability -->
+    <section>
+      <form action="#" method="post" enctype="multipart/form-data" novalidate="false">
+        <h2>Event Registration</h2>
+        
+        <!-- Basic Info Row - TC05: Flexbox Layout -->
+        <div class="row">
+          <div class="form-group">
+            <label for="name">Full Name <span style="color: var(--error-color, #e74c3c)">*</span></label>
+            <!-- TC07: Input Focus Transition -->
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span style="color: var(--error-color, #e74c3c)">*</span></label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="date">Attendance Date <span style="color: var(--error-color, #e74c3c)">*</span></label>
+            <input type="date" id="date" name="date" required>
+          </div>
+        </div>
+
+        <!-- Ticket Type -->
+        <fieldset>
+          <legend>Ticket Type</legend>
+          <div class="radio-group">
+            <label><input type="radio" name="ticket" value="standard" checked> Standard (Free)</label>
+            <label><input type="radio" name="ticket" value="vip"> VIP ($99)</label>
+          </div>
+        </fieldset>
+
+        <!-- Preferred Track -->
+        <div class="form-group">
+          <label for="track">Preferred Track</label>
+          <select id="track" name="track">
+            <option value="" disabled>-- Select a track --</option>
+            <option value="dev" selected>Development</option>
+            <option value="ds">Data Science</option>
+            <option value="sec">Security</option>
+          </select>
+        </div>
+
+        <!-- Notes -->
+        <div class="form-group">
+          <label for="notes">Notes / Requirements</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Dietary needs, accessibility requirements, questions, etc."></textarea>
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-group">
+          <label for="file">Upload ID (Image or PDF)</label>
+          <input type="file" id="file" name="file" accept="image/*,application/pdf">
+        </div>
+
+        <!-- Submit Button - TC06: Button Hover Transition -->
+        <div class="submit-wrapper">
+          <input type="submit" value="Register Now">
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tech Summit. All rights reserved.</p>
+  </footer>
+</body>
+</html>

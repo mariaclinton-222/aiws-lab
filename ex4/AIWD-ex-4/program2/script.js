@@ -1,0 +1,38 @@
+/* Cake Order Calculator – script.js */
+const flavourData={vanilla:{name:"Vanilla",price:500,img:"images/vanilla.png"},chocolate:{name:"Chocolate",price:600,img:"images/chocolate.png"},strawberry:{name:"Strawberry",price:650,img:"images/strawberry.png"},butterscotch:{name:"Butterscotch",price:550,img:"images/butterscotch.png"},redvelvet:{name:"Red Velvet",price:750,img:"images/redvelvet.png"},blackforest:{name:"Black Forest",price:700,img:"images/blackforest.png"},pineapple:{name:"Pineapple",price:500,img:"images/pineapple.png"},mango:{name:"Mango",price:650,img:"images/mango.png"}};
+
+// TC01: getElementById & querySelector
+function getDOMElements(){return{customerName:document.getElementById("customerName"),quantity:document.getElementById("quantity"),cakeMessage:document.getElementById("cakeMessage"),charCount:document.getElementById("charCount"),calculateBtn:document.getElementById("calculateBtn"),orderBtn:document.getElementById("orderBtn"),orderSummary:document.querySelector("#orderSummary"),summaryDetails:document.querySelector("#summaryDetails"),totalValue:document.querySelector("#totalValue"),orderCard:document.getElementById("orderCard"),selectedPreview:document.getElementById("selectedPreview"),selectedImg:document.getElementById("selectedImg"),selectedName:document.getElementById("selectedName"),selectedPrice:document.getElementById("selectedPrice"),heroImage:document.getElementById("heroImage")}}
+
+// TC02: getElementsByClassName & querySelectorAll
+function getMultipleElements(){return{flavourRadios:document.getElementsByClassName("flavour-radio"),toppingCheckboxes:document.getElementsByClassName("topping-checkbox"),formGroups:document.querySelectorAll(".form-group"),radioCards:document.getElementsByClassName("radio-card"),checkboxCards:document.getElementsByClassName("checkbox-card"),flavourCards:document.getElementsByClassName("flavour-card")}}
+
+// TC03: getElementsByTagName
+function getElementsByTag(){return{allLabels:document.getElementsByTagName("label"),allInputs:document.getElementsByTagName("input"),allButtons:document.getElementsByTagName("button"),allSections:document.getElementsByTagName("section"),allImages:document.getElementsByTagName("img")}}
+
+function getSelectedFlavour(){const r=document.getElementsByClassName("flavour-radio");for(let i=0;i<r.length;i++)if(r[i].checked)return r[i].value;return null}
+function getSelectedSize(){const r=document.querySelectorAll('input[name="cakeSize"]');for(const radio of r)if(radio.checked)return parseFloat(radio.value);return 1}
+function getSelectedToppings(){const cb=document.getElementsByClassName("topping-checkbox");const s=[];for(let i=0;i<cb.length;i++)if(cb[i].checked)s.push({name:cb[i].value,price:parseInt(cb[i].getAttribute("data-price"))});return s}
+function capitalize(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function getToppingEmoji(n){return{sprinkles:"✨",fruits:"🍇",nuts:"🥜",chocochips:"🍫",caramel:"🍯",fondant:"🎀"}[n]||"🍰"}
+
+// TC08: Calculations
+function calculateTotal(){const fk=getSelectedFlavour();const fp=fk?flavourData[fk].price:0;const sz=getSelectedSize();const t=getSelectedToppings();const q=parseInt(document.getElementById("quantity").value)||1;const bp=fp*sz;const tt=t.reduce((s,x)=>s+x.price,0);return{flavourKey:fk,flavourPrice:fp,size:sz,basePrice:bp,toppings:t,toppingsTotal:tt,perCake:bp+tt,qty:q,grandTotal:(bp+tt)*q}}
+
+// TC04: onclick – Calculate
+function calculateOrder(){const e=getDOMElements();if(!e.customerName.value.trim()){e.customerName.focus();e.customerName.style.borderColor="#ef4444";setTimeout(()=>e.customerName.style.borderColor="",1500);return}const fk=getSelectedFlavour();if(!fk){document.getElementById("flavourGrid").scrollIntoView({behavior:"smooth",block:"center"});document.getElementById("flavourGrid").style.boxShadow="0 0 0 2px #ef4444";setTimeout(()=>document.getElementById("flavourGrid").style.boxShadow="",1500);return}const c=calculateTotal();const f=flavourData[fk];const t=getSelectedToppings();const msg=e.cakeMessage.value.trim();e.summaryDetails.innerHTML="";const rows=[{l:"👤 Customer",v:e.customerName.value.trim()},{l:"🎂 Flavour",v:f.name},{l:"⚖️ Size",v:`${c.size} Kg`},{l:"💰 Base Price",v:`₹${c.flavourPrice} × ${c.size} = ₹${c.basePrice}`}];if(t.length>0){rows.push({l:"🍫 Toppings",v:t.map(x=>`${getToppingEmoji(x.name)} ${capitalize(x.name)} (₹${x.price})`).join(", ")});rows.push({l:"🧾 Toppings Total",v:`₹${c.toppingsTotal}`})}else{rows.push({l:"🍫 Toppings",v:"None"})}rows.push({l:"📦 Quantity",v:`× ${c.qty}`});if(msg)rows.push({l:"✉️ Message",v:`"${msg}"`});rows.forEach(r=>{const d=document.createElement("div");d.className="summary-row";d.innerHTML=`<span class="label">${r.l}</span><span class="value">${r.v}</span>`;e.summaryDetails.appendChild(d)});e.totalValue.textContent=`₹${c.grandTotal.toLocaleString("en-IN")}`;e.orderSummary.classList.remove("hidden");e.orderSummary.style.animation="none";void e.orderSummary.offsetHeight;e.orderSummary.style.animation="fadeUp 0.5s ease-out";e.orderBtn.classList.remove("hidden");e.totalValue.style.color="#fbbf24";setTimeout(()=>e.totalValue.style.color="",800);setTimeout(()=>e.orderSummary.scrollIntoView({behavior:"smooth",block:"center"}),200)}
+
+// TC05: onsubmit
+function handleFormSubmit(event){event.preventDefault();const e=getDOMElements();const c=calculateTotal();if(c.grandTotal<=0){calculateOrder();return}const s=document.getElementById("orderSummary");s.style.background="rgba(52,211,153,.12)";s.style.borderColor="#34d399";s.querySelector(".summary-title").textContent="✅ Order Placed Successfully!";s.querySelector(".summary-title").style.color="#34d399";document.getElementById("orderBtn").classList.add("hidden");const b=document.createElement("button");b.type="button";b.className="calculate-btn";b.style.marginTop="14px";b.innerHTML="<span>🔄 New Order</span>";b.onclick=()=>location.reload();s.appendChild(b);alert(`Thank you ${e.customerName.value}! Your order of ₹${c.grandTotal.toLocaleString("en-IN")} has been placed.`)}
+
+function handleNameKeyup(e){e.target.style.borderColor=""}
+function handleFlavourChange(){const fk=getSelectedFlavour();if(!fk)return;const f=flavourData[fk];const e=getDOMElements();e.selectedPreview.classList.remove("hidden");e.selectedImg.src=f.img;e.selectedImg.alt=f.name+" Cake";e.selectedName.textContent=f.name+" Cake";e.selectedPrice.textContent=`₹${f.price}`;document.getElementById("flavourGrid").style.boxShadow="";autoRecalculate()}
+function handleSizeChange(){autoRecalculate()}
+function handleToppingChange(){autoRecalculate()}
+function handleQtyKeyup(){const i=document.getElementById("quantity");let v=parseInt(i.value);if(v<1)i.value=1;if(v>10)i.value=10;autoRecalculate()}
+function handleMessageKeyup(){const m=document.getElementById("cakeMessage");document.getElementById("charCount").textContent=`${m.value.length}/40`}
+function changeQuantity(d){const i=document.getElementById("quantity");let v=parseInt(i.value)||1;v+=d;if(v<1)v=1;if(v>10)v=10;i.value=v;autoRecalculate()}
+function autoRecalculate(){if(!document.getElementById("orderSummary").classList.contains("hidden"))calculateOrder()}
+
+// TC06: onload
+function initApp(){const e=getDOMElements();console.log("[TC01] DOM elements accessed.");const m=getMultipleElements();console.log(`[TC02] ${m.flavourRadios.length} flavour radios, ${m.toppingCheckboxes.length} checkboxes, ${m.formGroups.length} groups, ${m.flavourCards.length} cards.`);const t=getElementsByTag();console.log(`[TC03] ${t.allLabels.length} labels, ${t.allInputs.length} inputs, ${t.allButtons.length} buttons, ${t.allImages.length} images.`);handleMessageKeyup();console.log("[TC06] Cake Order app initialized via onload.")}

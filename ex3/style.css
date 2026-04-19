@@ -1,0 +1,231 @@
+/* =====================================================
+   BOOTSTRAP EVENT REGISTRATION PORTAL
+   Custom Styles to Complement Bootstrap 5
+   ===================================================== */
+
+/* Import Bootstrap Icons */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+
+/* -------------------- Custom Variables -------------------- */
+:root {
+  --custom-primary: #0d6efd;
+  --custom-gradient-start: #667eea;
+  --custom-gradient-end: #764ba2;
+}
+
+/* -------------------- Body Background -------------------- */
+body {
+  background: linear-gradient(135deg, var(--custom-gradient-start) 0%, var(--custom-gradient-end) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* -------------------- Header Gradient -------------------- */
+.bg-gradient {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* -------------------- Card Enhancements -------------------- */
+.card {
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* -------------------- Navigation Enhancements -------------------- */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffc107 !important;
+}
+
+/* -------------------- Button Enhancements -------------------- */
+.btn {
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #0a58ca;
+  border-color: #0a58ca;
+}
+
+.btn-warning:hover {
+  background-color: #ffca2c;
+  border-color: #ffca2c;
+}
+
+/* -------------------- Form Enhancements -------------------- */
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* -------------------- Image Responsiveness -------------------- */
+.img-fluid {
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.02);
+}
+
+/* -------------------- Video & Audio -------------------- */
+video,
+audio {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------------- Footer -------------------- */
+footer {
+  margin-top: auto;
+}
+
+/* -------------------- Custom Alignment Classes -------------------- */
+.text-justified {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Section title with left alignment and accent */
+.section-title-left {
+  text-align: left;
+  position: relative;
+  padding-left: 15px;
+}
+
+.section-title-left::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #0d6efd, #667eea);
+  border-radius: 2px;
+}
+
+/* Card header with flex alignment */
+.card-header .d-flex {
+  gap: 1rem;
+}
+
+/* Alternating card alignments */
+.card-body .text-start {
+  border-left: 3px solid transparent;
+  padding-left: 0;
+}
+
+.card-body .text-end {
+  border-right: 3px solid transparent;
+  padding-right: 0;
+}
+
+/* Form label alignment */
+.form-label {
+  text-align: left;
+  display: block;
+}
+
+/* Button group alignment */
+.btn-group-aligned {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* -------------------- Responsive Adjustments -------------------- */
+
+/* Mobile (TC08: Mobile View ~480px) */
+@media (max-width: 480px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  .lead {
+    font-size: 1rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+/* Tablet (TC09: Tablet View ~768px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .display-4 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Desktop (TC10: Desktop View) */
+@media (min-width: 992px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* -------------------- Accessibility -------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+/* -------------------- Print Styles -------------------- */
+@media print {
+  body {
+    background: white;
+  }
+  
+  .navbar,
+  footer,
+  .btn {
+    display: none;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}

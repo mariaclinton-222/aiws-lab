@@ -1,0 +1,318 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.event-header {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.event-header h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.event-subtitle {
+    font-size: 1.3em;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+.countdown-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px;
+    text-align: center;
+    color: white;
+}
+
+.countdown-section h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.time-unit {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 25px 30px;
+    border-radius: 15px;
+    min-width: 120px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.time-value {
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    color: #fff700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+}
+
+.time-label {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.separator {
+    font-size: 3em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.status-message {
+    margin-top: 30px;
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 25px;
+    border-radius: 15px;
+    display: none;
+    animation: fadeInScale 0.5s ease-in-out;
+}
+
+.status-message.closed {
+    background: #ff4757;
+    color: white;
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.registration-form {
+    padding: 50px 40px;
+}
+
+.registration-form h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input:disabled,
+.form-group select:disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.checkbox-group span {
+    font-size: 0.95em;
+}
+
+.register-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 16px 60px;
+    font-size: 1.2em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 30px auto 0;
+    font-weight: bold;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    width: 100%;
+    max-width: 300px;
+}
+
+.register-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.register-btn:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.register-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+    }
+    
+    .event-header {
+        padding: 30px 20px;
+    }
+    
+    .event-header h1 {
+        font-size: 2em;
+    }
+    
+    .event-subtitle {
+        font-size: 1.1em;
+    }
+    
+    .countdown-section {
+        padding: 30px 20px;
+    }
+    
+    .countdown-section h2 {
+        font-size: 1.5em;
+    }
+    
+    .countdown-display {
+        gap: 10px;
+    }
+    
+    .time-unit {
+        padding: 15px 20px;
+        min-width: 80px;
+    }
+    
+    .time-value {
+        font-size: 2em;
+    }
+    
+    .time-label {
+        font-size: 0.75em;
+    }
+    
+    .separator {
+        font-size: 2em;
+    }
+    
+    .status-message {
+        font-size: 1.8em;
+        padding: 20px;
+    }
+    
+    .registration-form {
+        padding: 30px 20px;
+    }
+    
+    .registration-form h2 {
+        font-size: 1.6em;
+    }
+    
+    .register-btn {
+        padding: 14px 40px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .time-unit {
+        padding: 12px 15px;
+        min-width: 70px;
+    }
+    
+    .time-value {
+        font-size: 1.8em;
+    }
+    
+    .separator {
+        display: none;
+    }
+    
+    .countdown-display {
+        gap: 8px;
+    }
+}
